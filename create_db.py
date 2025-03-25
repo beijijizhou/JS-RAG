@@ -2,7 +2,7 @@ from langchain_community.document_loaders import DirectoryLoader  # Fixed import
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.schema import Document
 from sentence_transformers import SentenceTransformer
-from langchain_community.vectorstores import Chroma  # Fixed import
+from langchain_chroma import Chroma
 import os
 import shutil
 from typing import List
