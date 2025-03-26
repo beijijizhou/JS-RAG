@@ -1,4 +1,4 @@
-from langchain_community.document_loaders import DirectoryLoader  # Fixed import
+from langchain_community.document_loaders import DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.schema import Document
 from sentence_transformers import SentenceTransformer
@@ -6,7 +6,7 @@ from langchain_chroma import Chroma
 import os
 import shutil
 from typing import List
-# Rest of your code remains unchanged
+
 CHROMA_PATH = "chroma"
 DATA_PATH = "javascript"
 
@@ -39,7 +39,20 @@ def split_text(documents: list[Document]):
     )
     chunks = text_splitter.split_documents(documents)
     print(f"Split {len(documents)} documents into {len(chunks)} chunks.")
+    
+    # Add custom IDs and enhance metadata
+    for i, chunk in enumerate(chunks):
+        file_path = chunk.metadata.get("source", "unknown")
+        relative_path = os.path.relpath(file_path, DATA_PATH)
+        chunk_id = f"{relative_path.replace(os.sep, '_')}_chunk_{i}"
+        chunk.metadata["id"] = chunk_id
+        chunk.metadata.update({
+            "source_file": relative_path,
+            "chunk_index": i
+        })
+    
     return chunks
+
 class SentenceTransformerEmbeddings:
     def __init__(self, model_name: str):
         self.model = SentenceTransformer(model_name)
@@ -54,13 +67,13 @@ def save_to_chroma(chunks: list[Document]):
     if os.path.exists(CHROMA_PATH):
         shutil.rmtree(CHROMA_PATH)
 
-    embedder = SentenceTransformerEmbeddings("all-MiniLM-L6-v2")  # Use custom class
+    embedder = SentenceTransformerEmbeddings("all-MiniLM-L6-v2")
     db = Chroma.from_documents(
-        chunks,
+        chunks,  # Pass the full Document objects directly
         embedding=embedder,
         persist_directory=CHROMA_PATH
     )
-    print(f"Saved {len(chunks)} chunks to {CHROMA_PATH}.")
+    print(f"Saved {len(chunks)} chunks to {CHROMA_PATH} with IDs and metadata.")
 
 if __name__ == "__main__":
     main()

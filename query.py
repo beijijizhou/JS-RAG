@@ -27,7 +27,16 @@ print(f"Query time: {query_time:.2f} seconds")
 # Rest of your code remains the same...
 
 # Print results
-for i, doc in enumerate(results["documents"][0]):
+for i in range(len(results["documents"][0])):
+    doc = results["documents"][0][i].strip()
+    doc_id = results["ids"][0][i]
+    metadata = results["metadatas"][0][i]
+
     print(f"Result {i + 1}:")
-    print(doc.strip())
+    print(f"Document: {doc}")
+    print(f"ID: {doc_id}")
+    print("Metadata:")
+    for key, value in metadata.items():
+        print(f"  {key}: {value}")
+    print(f"Distance: {results['distances'][0][i]:.4f}")
     print("-" * 50)
