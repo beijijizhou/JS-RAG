@@ -97,3 +97,25 @@
 [32mINFO[0m:     [26-03-2025 13:09:44] ::1:58744 - "GET /api/v2/tenants/default_tenant/databases/default_database HTTP/1.1" 200
 [32mINFO[0m:     [26-03-2025 13:09:44] ::1:58743 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/langchain HTTP/1.1" 200
 [32mINFO[0m:     [26-03-2025 13:09:44] ::1:58743 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/52565fd9-9097-4bc3-addd-07d91fd46720/query HTTP/1.1" 200
+[33mWARNING[0m:  [30-03-2025 13:29:38] chroma_server_nofile is set to 65535, but this is less than current soft limit of 1048575. chroma_server_nofile will not be set.
+[32mINFO[0m:     [30-03-2025 13:29:38] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[36mDEBUG[0m:    [30-03-2025 13:29:38] Starting component System
+[36mDEBUG[0m:    [30-03-2025 13:29:38] Starting component OpenTelemetryClient
+[36mDEBUG[0m:    [30-03-2025 13:29:38] Starting component SqliteDB
+[36mDEBUG[0m:    [30-03-2025 13:29:38] Starting component SimpleQuotaEnforcer
+[36mDEBUG[0m:    [30-03-2025 13:29:38] Starting component Posthog
+[36mDEBUG[0m:    [30-03-2025 13:29:38] Starting component SimpleRateLimitEnforcer
+[36mDEBUG[0m:    [30-03-2025 13:29:38] Starting component LocalSegmentManager
+[36mDEBUG[0m:    [30-03-2025 13:29:38] Starting component LocalExecutor
+[36mDEBUG[0m:    [30-03-2025 13:29:38] Starting component SegmentAPI
+[36mDEBUG[0m:    [30-03-2025 13:29:38] Starting component SimpleAsyncRateLimitEnforcer
+[32mINFO[0m:     [30-03-2025 13:29:38] Started server process [[36m74128[0m]
+[32mINFO[0m:     [30-03-2025 13:29:38] Waiting for application startup.
+[32mINFO[0m:     [30-03-2025 13:29:38] Application startup complete.
+[32mINFO[0m:     [30-03-2025 13:29:38] Uvicorn running on [1mhttp://localhost:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     [30-03-2025 13:29:49] ::1:58790 - "GET /api/v2/auth/identity HTTP/1.1" 200
+[32mINFO[0m:     [30-03-2025 13:29:49] ::1:58791 - "GET /api/v2/tenants/default_tenant HTTP/1.1" 200
+[32mINFO[0m:     [30-03-2025 13:29:49] ::1:58791 - "GET /api/v2/tenants/default_tenant/databases/default_database HTTP/1.1" 200
+[32mINFO[0m:     [30-03-2025 13:29:49] ::1:58790 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/langchain HTTP/1.1" 200
+[36mDEBUG[0m:    [30-03-2025 13:30:04] Starting component PersistentLocalHnswSegment
+[32mINFO[0m:     [30-03-2025 13:30:04] ::1:58855 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/233ba5b5-510e-4b77-95f7-2d2c61a8ed49/query HTTP/1.1" 200
