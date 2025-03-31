@@ -51,8 +51,9 @@ async def generate_response_stream(query: str, context: list[str]) -> AsyncGener
     """Streaming response yielding chunks of text."""
     prompt = BASE_PROMPT + f"Query: {query}\n\nContext:\n" + "\n".join([f"- {doc}" for doc in context])
     try:
-        response = model.generate_content(prompt, stream=True)
-        for chunk in response:
+        response = await model.generate_content_async(prompt, stream=True)
+        async for chunk in response:
+            print(chunk.text)
             yield chunk.text
     except Exception as e:
         yield f"Error generating response: {str(e)}"
