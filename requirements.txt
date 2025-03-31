@@ -3,3 +3,4 @@ uvicorn
 sentence-transformers
 chromadb
 pydantic-settings>=2.0.0
+google-generativeai
