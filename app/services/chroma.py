@@ -2,7 +2,9 @@ import chromadb
 # from app.config.settings import settings
 
 # Initialize ChromaDB client
-client = chromadb.HttpClient(host="localhost", port=8000)
+CHROMA_PATH = "/Users/hongzhonghu/Desktop/rag/chroma"
+client = chromadb.PersistentClient(path=CHROMA_PATH)
+# client = chromadb.HttpClient(host="localhost", port=8000)
 collection = client.get_collection("langchain")
 # print(f"Connected to ChromaDB at {settings.chroma_host}:{settings.chroma_port}")
 
