@@ -11,13 +11,16 @@ router = APIRouter()
 async def embed(input: TextInput):
     """Non-streaming endpoint."""
     query = input.texts[0]
+   
     query_embedding = get_embedding(query)
     results = query_chroma(query_embedding)
-
+   
     cleaned_results = [
         result["document"].split("\n\n", 1)[-1].strip()
         for result in results
     ]
+
+    return {"texts": cleaned_results}
 
     explanation, code = await generate_response(query, cleaned_results)
 
