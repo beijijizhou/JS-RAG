@@ -1,9 +1,5 @@
 import os
 from pinecone import Pinecone
-from langchain_community.document_loaders import DirectoryLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.schema import Document
-from sentence_transformers import SentenceTransformer
 import numpy as np
 
 # Pinecone setup
@@ -13,3 +9,16 @@ if not api_key:
 pc = Pinecone(api_key=api_key)
 index_name = "testing"
 index = pc.Index(index_name)
+query_payload = {
+    "inputs": {
+        "text": "what is promise."
+    },
+    "top_k": 3
+}
+
+results = index.search(
+    namespace="js-rag",
+    query=query_payload
+)
+
+print(results)
