@@ -7,6 +7,8 @@ client = chromadb.PersistentClient(path=CHROMA_PATH)
 # client = chromadb.HttpClient(host="localhost", port=8000)
 collection = client.get_collection("langchain")
 # print(f"Connected to ChromaDB at {settings.chroma_host}:{settings.chroma_port}")
+count = collection.count()
+print(f"Number of items: {count}")
 
 def query_chroma(embedding: list[float], n_results: int = 3):
     """Query ChromaDB with an embedding and return results."""
