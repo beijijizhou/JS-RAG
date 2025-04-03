@@ -31,3 +31,7 @@ else:
     # Verify the connection by fetching index stats
     index_stats = index.describe_index_stats()
     print(f"Index stats: {index_stats}")
+
+query_vector = np.random.rand(1024).tolist()
+results = index.query(vector=query_vector, top_k=5)
+print(results)
